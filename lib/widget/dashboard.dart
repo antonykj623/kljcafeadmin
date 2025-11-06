@@ -1,6 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:kljcafe_admin/widget/combo/addcombo.dart';
+import 'package:kljcafe_admin/widget/combo/combolist.dart';
+import 'package:kljcafe_admin/widget/posters/addposters.dart';
+import 'package:kljcafe_admin/widget/posters/posterslist.dart';
 import 'package:kljcafe_admin/widget/product/productlis.dart';
+import 'package:kljcafe_admin/widget/report/commisionreport.dart';
+import 'package:kljcafe_admin/widget/report/employeewage.dart';
+import 'package:kljcafe_admin/widget/report/expensereport.dart';
+import 'package:kljcafe_admin/widget/report/incomereport.dart';
 
+import 'employee/addemployee.dart';
+import 'employee/employeelist.dart';
 import 'product/addproduct.dart';
 
 class DashboardPage extends StatefulWidget {
@@ -134,8 +144,6 @@ class _DashboardPageState extends State<DashboardPage> {
       title: "Combos",
       buttons: [
         _actionButton("Add Combo"),
-        _actionButton("Edit Combo"),
-        _actionButton("Delete Combo"),
         _actionButton("Combo List"),
       ],
     );
@@ -193,6 +201,7 @@ class _DashboardPageState extends State<DashboardPage> {
         _actionButton("Income Report"),
         _actionButton("Expense Report"),
         _actionButton("Wage Report"),
+        _actionButton("Commission Report"),
       ],
     );
   }
@@ -264,7 +273,101 @@ class _DashboardPageState extends State<DashboardPage> {
         {
           showWalletOfferDialog(context);
         }
+        else if(label.compareTo("Add Combo")==0)
+          {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (_) => AddComboPage(),
+              ),
+            );
+          }
+        else if(label.compareTo("Combo List")==0)
+          {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (_) => ComboListPage(),
+              ),
+            );
 
+          }
+        else if(label.compareTo("Add Employee")==0)
+          {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (_) => AddEmployeeScreen(),
+              ),
+            );
+          }
+        else if(label.compareTo("Employee List")==0)
+        {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (_) => EmployeeListScreen(),
+            ),
+          );
+        }
+
+        else if(label.compareTo("Add Poster")==0)
+        {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (_) => AddPosterScreen(),
+            ),
+          );
+        }
+        else if(label.compareTo("Poster List")==0)
+        {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (_) => PosterListScreen(),
+            ),
+          );
+        }
+
+        else if(label.compareTo("Wage Report")==0)
+        {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (_) => EmployeeWageReportScreen(),
+            ),
+          );
+        }
+
+        else if(label.compareTo("Income Report")==0)
+        {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (_) => IncomeReportScreen(),
+            ),
+          );
+        }
+        else if(label.compareTo("Expense Report")==0)
+        {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (_) => ExpenseReportScreen(),
+            ),
+          );
+        }
+        else if(label.compareTo("Commission Report")==0)
+          {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (_) => CommissionReportScreen(),
+              ),
+            );
+
+          }
 
 
       },
