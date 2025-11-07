@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kljcafe_admin/widget/combo/addcombo.dart';
 import 'package:kljcafe_admin/widget/combo/combolist.dart';
+import 'package:kljcafe_admin/widget/customers/customers.dart';
 import 'package:kljcafe_admin/widget/posters/addposters.dart';
 import 'package:kljcafe_admin/widget/posters/posterslist.dart';
 import 'package:kljcafe_admin/widget/product/productlis.dart';
@@ -54,6 +55,11 @@ class _DashboardPageState extends State<DashboardPage> {
             },
             labelType: NavigationRailLabelType.all,
             destinations: const [
+              NavigationRailDestination(
+                icon: Icon(Icons.group_outlined),
+                selectedIcon: Icon(Icons.group),
+                label: Text('Customers'),
+              ),
               NavigationRailDestination(
                 icon: Icon(Icons.shopping_bag_outlined),
                 selectedIcon: Icon(Icons.shopping_bag),
@@ -109,18 +115,20 @@ class _DashboardPageState extends State<DashboardPage> {
   Widget _buildContent() {
     switch (_selectedIndex) {
       case 0:
-        return _buildProductsSection();
+        return _buildCustomersSection();
       case 1:
-        return _buildCombosSection();
+        return _buildProductsSection();
       case 2:
-        return _buildEmployeesSection();
+        return _buildCombosSection();
       case 3:
-        return _buildWalletOfferSection();
+        return _buildEmployeesSection();
       case 4:
-        return _buildReferralOfferSection();
+        return _buildWalletOfferSection();
       case 5:
-        return _buildPostersSection();
+        return _buildReferralOfferSection();
       case 6:
+        return _buildPostersSection();
+      case 7:
         return _buildReportsSection();
       default:
         return const Center(child: Text("Select an option"));
@@ -134,6 +142,18 @@ class _DashboardPageState extends State<DashboardPage> {
       buttons: [
         _actionButton("Add Product"),
         _actionButton("Product List"),
+      ],
+    );
+  }
+
+  //----------Customers section --------
+
+  Widget _buildCustomersSection() {
+    return _sectionTemplate(
+      title: "Customers",
+      buttons: [
+
+        _actionButton("Customers List"),
       ],
     );
   }
@@ -366,6 +386,17 @@ class _DashboardPageState extends State<DashboardPage> {
                 builder: (_) => CommissionReportScreen(),
               ),
             );
+
+          }
+        else if(label.compareTo("Customers List")==0)
+          {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (_) => CustomerListScreen(),
+              ),
+            );
+
 
           }
 
